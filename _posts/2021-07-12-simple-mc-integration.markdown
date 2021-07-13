@@ -62,7 +62,7 @@ Integration value = volume * sum / N
 To make it easy and more understandable let us break it into some easy terms.
 
 1. **Subspace K :** The integration domain around which the function is meant to be integrated. The points which are sampled are taken from this subspace as well. This subspace is a polytope, a convex n-dimensional body, where `n > 0`.
-2. **Integration Function :** The integration function is also supposed to be the same dimensions as the Subspace K. Let it be `F(x1,x2,..., Xn)` or just by F(X). [`X` represents an dimensional cartesian point in n-dimensional space].
+2. **Integration Function :** The integration function is also supposed to be the same dimensions as the Subspace K. Let the function be `F(x1,x2,..., Xn)` or just by `F(X)`. [`X` represents a N-dimensional cartesian point in n-dimensional space].
 3. **Sampling :** The sampling as above mentioned in the examples it will not be done here by taking random points. To ensure uniformity of the sampled points inside the polytope, `random_walks` is supposed to be use here to ensure greater accuracy and efficiency. `random_walks` is feature from volesti library in `volume_approximation@GeomScale` the same GSoC organization I am working with.
 
 Types of random walks offered here for sampling are **BallWalk**, **BilliardWalk**, **AcceleratedBilliardWalk**, **JohnWalk**, **DikinWalk**, **VaidyaWalk**, **RDHRWalk**.
