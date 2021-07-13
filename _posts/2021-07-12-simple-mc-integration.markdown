@@ -67,7 +67,7 @@ To make it easy and more understandable let us break it into some easy terms.
 
 Types of random walks offered here for sampling are **BallWalk**, **BilliardWalk**, **AcceleratedBilliardWalk**, **JohnWalk**, **DikinWalk**, **VaidyaWalk**, **RDHRWalk**.
 
-The integration domain which is a polytope (N-dimensional convex body) in H-representation. Polytopes in H-representation polytopes like Cubes, Rectangles, simplices, product simplices, cross-polytopes, birkhoff polytopes. Such polytopes are can be created using Volesti libraries itself in representation of the form of `Ax <= b`, where `A \| b` is family of hyperplanes of in the form mentioned below.
+The integration domain which is a polytope (N-dimensional convex body) in H-representation. Polytopes in H-representation polytopes like Cubes, Rectangles, simplices, product simplices, cross-polytopes, birkhoff polytopes. Such polytopes are can be created using Volesti libraries itself in representation of the form of `Ax <= b`, where `A | b` is family of hyperplanes of in the form mentioned below.
 
 [IMAGE GOES HERE]
 
