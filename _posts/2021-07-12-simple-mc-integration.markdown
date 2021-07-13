@@ -67,9 +67,31 @@ To make it easy and more understandable let us break it into some easy terms.
 
 Types of random walks offered here for sampling are **BallWalk**, **BilliardWalk**, **AcceleratedBilliardWalk**, **JohnWalk**, **DikinWalk**, **VaidyaWalk**, **RDHRWalk**.
 
-The integration domain which is a polytope (N-dimensional convex body) in H-representation. Polytopes in H-representation polytopes like Cubes, Rectangles, simplices, product simplices, cross-polytopes, birkhoff polytopes. Such polytopes are can be created using Volesti libraries itself in representation of the form of `Ax <= b`, where `A | b` is family of hyperplanes of in the form mentioned below.
+The integration domain which is a polytope (N-dimensional convex body) in H-representation. Polytopes in H-representation polytopes like Cubes, Rectangles, simplices, product simplices, cross-polytopes, birkhoff polytopes. Such polytopes are can be created using Volesti libraries itself in representation of the form of `AX <= b`, where `A | b` is family of hyperplanes of in the form mentioned below.
 
-[IMAGE GOES HERE]
+Suppose a polytope is defined in H-representation(using a family of hyperplanes and forming a closed convex figure). For example we take a quadrilateral bounded by 2D linear equations and the closed quadrilateral is satisfied by the following constaints:
+
+```
+x + y <= 10
+-2x + 3y <= 5
+-x -y <= 10
+x - y <= 10
+
+They can be represented in the form of AX <= b, where
+
+A = [  1 ,  1  ]      X  = [  x  ]      b = [  10  ]
+    [ -2 ,  3  ]           [  y  ]          [   5  ]
+    [ -1 , -1  ]                            [  10  ]
+    [  1 , -1  ]                            [  10  ]
+
+A is a 4 * 2 matrix, X is 2 * 1 matrix and b is a 4 * 1 matrix.
+
+```
+
+{:refdef: style="text-align: center;"}
+![2D H-Polytope bound by 2D linear constraints]({{site.baseurl}}/assets/hpoly_2D_quadrilateral.png)
+{: refdef}
+
 
 If the user prefers to enter integration limits in the n-dimensional space, there is a provision for the same too. You can jump to usage section on this page to study more about it.
 
