@@ -25,7 +25,7 @@ A circle around the origin of radius = 1, say `x^2 + y^2 = 1` is inscribed insid
 
 Here comes the use of Monte Carlo Integration Algorithm. 
 * We take randomly sample points inside the square which contains our desired circle whose area we wish to calculate. 
-* We check if each random point is inside the circle are not. It is easy to check: Say we have a sampled point (x,y) and we can check if `x^2 + y^2 <= 1`.
+* We check if each 2D random point is inside the circle are not. It is easy to check: Say we have a sampled point (x,y) and we can check if `x^2 + y^2 <= 1`.
 * Say we check this for `N` sampled points inside a `for` loop. Let us use a loop counter `int accepted = 0`.
 * If the point satisfied which are the red points in the image, `accepted++`, for the blue points they are rejection points and and are not counted.
 * Now as we are supposed to know the volume of the subspace which is a square that is `side^2 = 4 square units`.
@@ -36,14 +36,14 @@ Area of the circle = Area of Square * accepted / N
 
 ### An example using function evaluation at sample points
 
-A little different example when we are not dealing with the acception-rejection sampling area and the entire subspace is our integration domain and our sampling area. In here we evaluate the function at each domain.
+A little different example when we are not dealing with the acception-rejection sampling area and the entire subspace is our integration domain and our sampling area. In here we evaluate the function at each point.
 Suppose we take an integration function `f(x) = e^( -x^2 )`. Since the function has depends on one variable only that is, `x`, it is supposed to be 1-dimensional function and we wish to integrate it from `-1 <= x <= 1`.
 
 {:refdef: style="text-align: center;"}
 ![e power minus x squared integration]({{site.baseurl}}/assets/mc_integration2.png)
 {: refdef}
 
-* We start by taking random sample points inside our our subspace that is `x \belongsto [-1,1]`.
+* We start off by taking random sample points inside our our subspace that is `x \belongsto [-1,1]`.
 * Suppose for `N` sample points we run loop `N` times.
 * We evaluate the function at each point and take the sum overall. `sum += F(X)`, where X is our sampled point.
 * Volume of the subspace is 2 units let it be `volume`.
@@ -63,11 +63,11 @@ To make it easy and more understandable let us break it into some easy terms.
 
 1. **Subspace K :** The integration domain around which the function is meant to be integrated. The points which are sampled are taken from this subspace as well. This subspace is a polytope, a convex n-dimensional body, where `n > 0`.
 2. **Integration Function :** The integration function is also supposed to be the same dimensions as the Subspace K. Let it be `F(x1,x2,..., Xn)` or just by F(X). [`X` represents an dimensional cartesian point in n-dimensional space].
-3. **Sampling :** The sampling as above mentioned int he examples it will not be done here by taking random points. To ensure uniformity of the sampled points inside the polytope, `random_walks` is supposed to be use here to ensure greater accuracy and efficiency. `random_walks` is feature from volesti library in `volume_approximation@GeomScale` the same GSoC organization I am working with.
+3. **Sampling :** The sampling as above mentioned in the examples it will not be done here by taking random points. To ensure uniformity of the sampled points inside the polytope, `random_walks` is supposed to be use here to ensure greater accuracy and efficiency. `random_walks` is feature from volesti library in `volume_approximation@GeomScale` the same GSoC organization I am working with.
 
-Types of random walks offered here for sampling are **BallWalk**, **BilliardWalk**, **AcceleratedBilliardWalk**, **JohnWalk**, **DikinWalk**, **VaidyaWalk**, **RDHRWalk**. To study about them more I have added links below.
+Types of random walks offered here for sampling are **BallWalk**, **BilliardWalk**, **AcceleratedBilliardWalk**, **JohnWalk**, **DikinWalk**, **VaidyaWalk**, **RDHRWalk**.
 
-The integration domain which is a polytope (N-dimensional convex body) in H-representation. Polytopes in H-representation polytopes like Cubes, Rectangles, simplices, product simplices, cross-polytopes, birkhoff polytopes. Such polytopes are can be created using Volesti libraries itself in representation of the form of Ax <= b, where A \| b is family of hyperplanes of in the form mentioned below.
+The integration domain which is a polytope (N-dimensional convex body) in H-representation. Polytopes in H-representation polytopes like Cubes, Rectangles, simplices, product simplices, cross-polytopes, birkhoff polytopes. Such polytopes are can be created using Volesti libraries itself in representation of the form of `Ax <= b`, where `A \| b` is family of hyperplanes of in the form mentioned below.
 
 [IMAGE GOES HERE]
 
