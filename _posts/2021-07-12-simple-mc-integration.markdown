@@ -123,7 +123,7 @@ Integral values have been tested using latte integrale, a start of the art softw
 Here is a miniature code of you can use the simple_mc_integration functions. There are two of them. 
 
 Some prerequisite information: 
-* `NT` is defined for double everywhere in the below examples.
+* `NT` is defined for `double` everywhere in the below examples.
 * Assume that we have already created our functions for integration. They look like this and they are supposed to be integrated around the polytopes or the integration limits we can define. 
 
 ```ruby
