@@ -58,14 +58,14 @@ template
 	typename NT
 >
 NT lovasz_vempala_integrate(EvaluationFunctor &g,
-            GradientFunctor &grad_g,
-            Parameters &params,
-            Polytope &P,
-            Point x0,
-			NT beta = 1.0,
-			volumetype voltype = SOB,
-			unsigned int walk_length = 10,
-			NT epsilon = 0.1)
+                            GradientFunctor &grad_g,
+                            Parameters &params,
+                            Polytope &P,
+                            Point x0,
+                            NT beta = 1.0,
+                            volumetype voltype = SOB,
+                            unsigned int walk_length = 10,
+                            NT epsilon = 0.1)
 ```
 
 
