@@ -24,6 +24,8 @@ Let ```f(x) = e^-g(x)``` be desired logconcave function to integrate over a subs
 1. We run warmstart samples from a choosen point say ```x0``` for `k` times to ensure proper mixing using uniform random walks mechanism around the subspace `K`. The point is chosen such than ```f(x0) >= beta^n * max(f)```, (```max(f)``` is the global maxima of the function within the subspace `K` choosen itself and `beta` is a parameter). A few more stuff and some variables you need to know about:
 
 ```
+[Initialize the variables here like m and k and alpha]
+
 ```
 
 2. Let ```W_0 = volume(K)``` be the estimation of the volume of subspace `K`.
