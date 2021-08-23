@@ -45,15 +45,15 @@ At i = m, f_i(x) = f_m(x) = f(x)
 3. For ```i = 1,2,...,m```, do the following: <br>
     -> Run the samples `k` times with target density proportional to ```f_(i-1)``` and starting points
 
-    []({{site.baseurl}}/assets/LV-1.png)
+    ![LV-1.png]({{site.baseurl}}/assets/LV-1.png)
 
     to get independent random points
 
-    []({{site.baseurl}}/assets/LV-2.png)
+    ![LV-2.png]({{site.baseurl}}/assets/LV-2.png)
 
     -> Using these points we compute
 
-    []({{site.baseurl}}/assets/LV-3.png)
+    ![LV-3.png]({{site.baseurl}}/assets/LV-3.png)
 
 4. Return ```W = W_0 W_1 ... W_m```, where W is the desired integral value for our logconcave function ```f(x)``` over the desired subspace `K`. By multiplying `W_1 ... W_n` the telescopic series in the exponents gets canceled out. And we are left with the desired value of the the integral`W`.
 
