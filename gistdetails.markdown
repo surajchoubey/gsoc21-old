@@ -1,6 +1,6 @@
 ---
 layout: page
-title: GIST
+title: Gist of Work Done in PRs
 permalink: /gist/
 ---
 
