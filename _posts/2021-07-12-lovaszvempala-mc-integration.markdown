@@ -24,24 +24,36 @@ Let ```f(x) = e^-g(x)``` be desired logconcave function to integrate over a subs
 1. We run warmstart samples from a choosen point say ```x0``` for `k` times to ensure proper mixing using uniform random walks mechanism around the subspace `K`. The point is chosen such than ```f(x0) >= beta^n * max(f)```, (```max(f)``` is the global maxima of the function within the subspace `K` choosen itself and `beta` is a parameter). A few more stuff and some variables you need to know about:
 
 ```
-[Initialize the variables here like m and k and alpha]
+unsigned int n = Subspace dimension
+
+B = 2 * n + 2 * log(1 / epsilon) + n * log(1 / beta)
+
+m = ceil(sqrt(n) * log(B))
+
+k = ceil(512 / pow(epsilon,2) * sqrt(n) * log(B))
+
+a_i = 1 / B * (1 + 1 / sqrt(n))^i
+
+f_i(x) = f(x) ^ a_i
+
+At i = m, f_i(x) = f_m(x) = f(x)
 
 ```
 
 2. Let ```W_0 = volume(K)``` be the estimation of the volume of subspace `K`.
 
-3. For ```i = 1,2,...,m```, do the following:
+3. For ```i = 1,2,...,m```, do the following: <br>
     -> Run the samples `k` times with target density proportional to ```f_(i-1)``` and starting points
 
-    [image goes here]
+    []({{site.baseurl}}/assets/LV-1.png)
 
     to get independent random points
 
-    [image goes here]    
+    []({{site.baseurl}}/assets/LV-2.png)
 
     -> Using these points we compute
 
-    [image goes here]
+    []({{site.baseurl}}/assets/LV-3.png)
 
 4. Return ```W = W_0 W_1 ... W_m```, where W is the desired integral value for our logconcave function ```f(x)``` over the desired subspace `K`. By multiplying `W_1 ... W_n` the telescopic series in the exponents gets canceled out. And we are left with the desired value of the the integral`W`.
 
@@ -99,10 +111,57 @@ After supplying the above quantities and objects to the integration function, we
 6. Return ```W = W_0 W_1 ... W_m```.
 
 ## Testing 
-Testing has been done using `torchquad`,
+Testing has been done using **Monte Carlo Integration** functions from the `torchquad`. You can find the tests on this github repository. You can go through the `Readme.md` and it will explain all the required information. 
 
-### Usage
+## Usage
+For testing out the `lovasz_vempala_integrate()` it is recommended that you have look over `include/ode_solvers/oracle_functors.hpp` in GeomScale/volume_approximation github repository to get basic understanding of how EvaluationFunctor and GradientFunctor are implemented. 
 
 ### Example Code
+As explained above about the variables they are passed as they satisfy the conditions of the algorithm. For a more detailed look on the code you can visit to `test/lv_mc_integration.cpp`
+
+```ruby
+
+/*
+    1. g is the EvaluationFunctor
+    2. grad_g is the GradientFunctor
+    3. HP is the polytope passed
+    4. AcceleratedBilliardWalk is the walktype passed for running warmstart samples
+    5. HPOLYTOPE specifies notation of the polytope( also other examples 
+       like VPOLYTOPE not tested particularly on it yet)
+    6. Point is a user defined datatype to represent n-dimensional points in n-dimensional space
+    7. NT is the number type(it can be float/double)
+    8. beta is an integration parameters whose value can be between (0,1]
+    8. x0 is the point that is the initial point chosen to run the 
+       warmstart samples so it properly mixes before running the HMC walks
+       It should be chosen such that it satisfies f(x0) >= beta ^ n * max(f)
+
+*/
+
+HPOLYTOPE HP;
+NT integral value;
+
+HP = generate_cube <HPOLYTOPE> (5, false);
+integral_value = lovasz_vempala_integrate 
+  <EvaluationFunctor, GradientFunctor, AcceleratedBilliardWalk, HPOLYTOPE, Point, NT>
+  (g, grad_g, HP, x0, beta, SOB, 5, 0.1);
+
+std::cout << "Integral value for a 5D polytope = " << integral_value << std::endl;
+
+HP = generate_cube <HPOLYTOPE> (10, false);
+integral_value = lovasz_vempala_integrate 
+  <EvaluationFunctor, GradientFunctor, AcceleratedBilliardWalk, HPOLYTOPE, Point, NT>
+  (g, grad_g, HP, x0, beta, SOB, 5, 0.1);
+
+std::cout << "Integral value for a 10D polytope = " << integral_value << std::endl;
+
+```
 
 ### Output Code
+
+```
+
+Integral value for a 5D polytope = 7.44508
+Integral value for a 10D polytope = 55.7236
+
+```
+
