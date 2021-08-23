@@ -43,10 +43,12 @@ Let ```f(x) = e^-g(x)``` be desired logconcave function to integrate over a subs
 
     [image goes here]
 
-4. Return ```W = W_0 W_1 ... W_m```, where W is the desired integral value for our logconcave function ```f(x)``` over the desired subspace `K`.
+4. Return ```W = W_0 W_1 ... W_m```, where W is the desired integral value for our logconcave function ```f(x)``` over the desired subspace `K`. By multiplying `W_1 ... W_n` the telescopic series in the exponents gets canceled out. And we are left with the desired value of the the integral`W`.
 
 ## The Project
 As discussed the theory above in this process, it involves to build an integration function ```lovasz_vempala_integrate()``` using Lovasz Vempala Integration algorithm. Regarding building the function we take in several parameters. So lets list them down, and explain each of them before proceeding to the next part:
+
+### Structure of the integration function
 
 ```
 template
@@ -79,11 +81,25 @@ NT lovasz_vempala_integrate(EvaluationFunctor &g,
 6. `volumetype` is an `enum` used to specify the volume algorithm from GeomScale/volume_approximation to calculate the volume of the given subspace. Available ones are `CB`,`CG` and `SOB`. Namely, cooling balls, cooling gaussians and sequence of balls algorithm.
 7. `walk_length` is the walk length which is going to be used for length of the walks which is supposed to be used in running warmstart samples, volume calculation algorithms and HMC algorithm.
 8. `NT epsilon` is the permissible error which can be set by the user to increase accuracy for the volume algorithm. Epsilon is also dependent on the beta dependent parameters too.
+9. `typename WalkType` is type of random walk which will be used to run hit-and-run sampling for the warmstart samples and ensure proper mixing. Available ones are 'BallWalk, CDHRWalk, RDHRWalk, BilliardWalk, AcceleratedBilliardWalk' and so on.
 
 ### How this algorithm is applied to the project?
+After supplying the above quantities and objects to the integration function, we get down to the main business.
 
+1. We use an `OptimizationFunctor` which wraps the supplied `EvaluationFunctor` and `GradientFunctor` and samples from the `EvaluationFunctor` proportionally to the variance `alpha`(a varibles as discussed above). OptimizationFunctor has its own parameters which helps us setup the variance accordingly
+
+2. Hamiltonian Monte Carlo Walk which is already implemented in the [GeomScale/volume_approximation](m) is used to sample from logconcave density functions
+
+3. From the supplied `WalkType`, `k` warmstart samples are run to ensure that the HMC walks have got properly mixed and follow memoryless property to choose the starting point based on random decision.
+
+4. Proceeding to the main part of the Lovasz Vempala Algorithm. A nested loops is run. In the outer loop, we keep running the loop until variance `alpha` crosses 1. `W_i` for `i = 1,2,..,m` if calculated and multiplied subsequently to `W_0` where we calculated the volume of the subspace.
+
+5. For the inner loop HMC walks are executed inside the subspace which samples points properly. ```W_i``` is calculated for g(x) expressed as a logconcave function where g(x) is proportional alpha - alpha_previous for `k` Hamiltonian Monte Carlo walks with `walk_length` set from the function declaration itself. 
+
+6. Return ```W = W_0 W_1 ... W_m```.
 
 ## Testing 
+Testing has been done using `torchquad`,
 
 ### Usage
 
