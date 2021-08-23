@@ -20,7 +20,7 @@
 
 title: Google Summer of Code '21 Journey @GeomScale
 email: srjchoubey2@gmail.com
-baseurl: /gsoc21
+baseurl: /gsoc21/
 url: surajchoubey.github.io
 description: >- # this means to ignore newlines until "baseurl:"
  This website contains weekly logs and reports of GSoC '21 student, Suraj Choubey. The project is Monte Carlo Integration under open source organization GeomScale.
