@@ -121,21 +121,21 @@ As explained above about the variables they are passed as they satisfy the condi
 
 ```ruby
 
-/*
-    1. g is the EvaluationFunctor
-    2. grad_g is the GradientFunctor
-    3. HP is the polytope passed
-    4. AcceleratedBilliardWalk is the walktype passed for running warmstart samples
-    5. HPOLYTOPE specifies notation of the polytope( also other examples 
-       like VPOLYTOPE not tested particularly on it yet)
-    6. Point is a user defined datatype to represent n-dimensional points in n-dimensional space
-    7. NT is the number type(it can be float/double)
-    8. beta is an integration parameters whose value can be between (0,1]
-    8. x0 is the point that is the initial point chosen to run the 
-       warmstart samples so it properly mixes before running the HMC walks
-       It should be chosen such that it satisfies f(x0) >= beta ^ n * max(f)
 
-*/
+# 1. g is the EvaluationFunctor
+# 2. grad_g is the GradientFunctor
+# 3. HP is the polytope passed
+# 4. AcceleratedBilliardWalk is the walktype passed for running warmstart samples
+# 5. HPOLYTOPE specifies notation of the polytope( also other examples 
+#    like VPOLYTOPE not tested particularly on it yet)
+# 6. Point is a user defined datatype to represent n-dimensional points in n-dimensional space
+# 7. NT is the number type(it can be float/double)
+# 8. beta is an integration parameters whose value can be between (0,1]
+# 8. x0 is the point that is the initial point chosen to run the 
+#    warmstart samples so it properly mixes before running the HMC walks
+#    It should be chosen such that it satisfies f(x0) >= beta ^ n * max(f)
+
+
 
 HPOLYTOPE HP;
 NT integral value;
