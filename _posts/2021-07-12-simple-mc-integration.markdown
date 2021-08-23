@@ -110,7 +110,7 @@ Integration value = volume * sum / N
 
 `simple_MC_integration.hpp` contains the header file written for the above algorithm mentioned. [[Link](https://github.com/surajchoubey/volume_approximation/blob/simple-MC-integrate/include/integration/simple_MC_integration.hpp)]
 
-Simple-MC-Integration is the first part of my Google Summer of Code 2021 project. The second part is the **Lovasz-Vempala Monte Carlo Integration**. You can jump to that blog [here](/gsoc21journey/lv-mc-integration/)!
+Simple-MC-Integration is the first part of my Google Summer of Code 2021 project. The second part is the **Lovasz-Vempala Monte Carlo Integration**. You can jump to that blog [here](/gsoc21/lv-mc-integration/)!
 
 ### Testing
 
