@@ -87,10 +87,10 @@ NT lovasz_vempala_integrate(EvaluationFunctor &g,
 
 1. `EvaluationFunctor` is the type of function expressed in terms of `g(x)` which is meant to be integrated in the form of `f(x) = e^-g(x)` around the provided subspace which is a polytope in this case.
 2. `GradientFunctor` is a type of gradient function which returns the gradient of a the `EvaluationFunctor g` as discussed above to return [ df/d1, df/d2, ... , df/dn ] where df/dy represents the nabla symbol, i.e. partial differentiation of a function f with respect to y.
-3. `Parameters` are the additional variables that let you decide more variables to customize your function and your gradient function. (Ideally you can look into the `include/integration/oracle_functors.hpp` in the GeomScale/volume_approxmimation repository and have a close look o how gradient functor, evaluation functor and parameters are constructed under one `struct`)
+3. `Parameters` are the additional variables that let you decide more variables to customize your function and your gradient function. (Ideally you can look into the `include/integration/oracle_functors.hpp` in the [GeomScale/volume_approximation](https://github.com/GeomScale/volume_approximation) repository and have a close look o how gradient functor, evaluation functor and parameters are constructed under one `struct`)
 4. `Point` is a user-defined datatype to store n-dimensional points in the n-dimensional space. `x0` is a point chosen such that ```f(x0) >= beta^n * max(f)``` satisfies.
 5. `NT beta` is a parameter in integration to help decide other beta-dependent parameters.
-6. `volumetype` is an `enum` used to specify the volume algorithm from GeomScale/volume_approximation to calculate the volume of the given subspace. Available ones are `CB`,`CG` and `SOB`. Namely, cooling balls, cooling gaussians and sequence of balls algorithm.
+6. `volumetype` is an `enum` used to specify the volume algorithm from [GeomScale/volume_approximation](https://github.com/GeomScale/volume_approximation) to calculate the volume of the given subspace. Available ones are `CB`,`CG` and `SOB`. Namely, cooling balls, cooling gaussians and sequence of balls algorithm.
 7. `walk_length` is the walk length which is going to be used for length of the walks which is supposed to be used in running warmstart samples, volume calculation algorithms and HMC algorithm.
 8. `NT epsilon` is the permissible error which can be set by the user to increase accuracy for the volume algorithm. Epsilon is also dependent on the beta dependent parameters too.
 9. `typename WalkType` is type of random walk which will be used to run hit-and-run sampling for the warmstart samples and ensure proper mixing. Available ones are 'BallWalk, CDHRWalk, RDHRWalk, BilliardWalk, AcceleratedBilliardWalk' and so on.
@@ -100,7 +100,7 @@ After supplying the above quantities and objects to the integration function, we
 
 1. We use an `OptimizationFunctor` which wraps the supplied `EvaluationFunctor` and `GradientFunctor` and samples from the `EvaluationFunctor` proportionally to the variance `alpha`(a varibles as discussed above). OptimizationFunctor has its own parameters which helps us setup the variance accordingly
 
-2. Hamiltonian Monte Carlo Walk which is already implemented in the [GeomScale/volume_approximation](m) is used to sample from logconcave density functions
+2. Hamiltonian Monte Carlo Walk which is already implemented in the [GeomScale/volume_approximation](https://github.com/GeomScale/volume_approximation) is used to sample from logconcave density functions
 
 3. From the supplied `WalkType`, `k` warmstart samples are run to ensure that the HMC walks have got properly mixed and follow memoryless property to choose the starting point based on random decision.
 
@@ -114,7 +114,7 @@ After supplying the above quantities and objects to the integration function, we
 Testing has been done using **Monte Carlo Integration** functions from the `torchquad`. You can find the tests on this github repository. You can go through the `Readme.md` and it will explain all the required information. 
 
 ## Usage
-For testing out the `lovasz_vempala_integrate()` it is recommended that you have look over `include/ode_solvers/oracle_functors.hpp` in GeomScale/volume_approximation github repository to get basic understanding of how EvaluationFunctor and GradientFunctor are implemented. 
+For testing out the `lovasz_vempala_integrate()` it is recommended that you have look over `include/ode_solvers/oracle_functors.hpp` in [GeomScale/volume_approximation](https://github.com/GeomScale/volume_approximation) github repository to get basic understanding of how EvaluationFunctor and GradientFunctor are implemented. 
 
 ### Example Code
 As explained above about the variables they are passed as they satisfy the conditions of the algorithm. For a more detailed look on the code you can visit to `test/lv_mc_integration.cpp`
