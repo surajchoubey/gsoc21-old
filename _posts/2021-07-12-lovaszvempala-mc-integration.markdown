@@ -101,7 +101,7 @@ NT lovasz_vempala_integrate(EvaluationFunctor &g,
 ### How this algorithm is applied to the project?
 After supplying the above quantities and objects to the integration function, we get down to the main business.
 
-1. We use an `OptimizationFunctor` which wraps the supplied `EvaluationFunctor` and `GradientFunctor` and samples from the `EvaluationFunctor` proportionally to the variance `alpha`(a varibles as discussed above). OptimizationFunctor has its own parameters which helps us setup the variance accordingly
+1. We use an `OptimizationFunctor` which wraps the supplied `EvaluationFunctor` and `GradientFunctor` and samples from the `EvaluationFunctor` proportionally to the variance `alpha`(a variables as discussed above). OptimizationFunctor has its own parameters which helps us setup the variance accordingly
 
 2. Hamiltonian Monte Carlo Walk which is already implemented in the [GeomScale/volume_approximation](https://github.com/GeomScale/volume_approximation) is used to sample from logconcave density functions
 
