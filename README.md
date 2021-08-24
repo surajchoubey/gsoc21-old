@@ -1,5 +1,6 @@
-# gsoc21
-Contains logs of my GSoC '21 journey
+# Google Summer of Code '21
 
-Visit the website at https://surajchoubey.github.io/gsoc21
+Contains blogs of my project in GSoC '21.
+
+Visit the website at: https://surajchoubey.github.io/gsoc21
 
