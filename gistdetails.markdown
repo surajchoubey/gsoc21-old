@@ -17,16 +17,16 @@ The overview can be found [here](https://en.wikipedia.org/wiki/Monte_Carlo_integ
 
 Works done in Pull requests mentioned
 
-### 1. Simple Monte Carlo Integration<BR>
+### 1. **Simple Monte Carlo Integration**<br>
 This PR is to add two functions in volesti's library to integrate functions around polytopes in N-dimensional space. 
 <br><br>
-Link to the blog post: https://surajchoubey.github.io/gsoc21/simple-mc-integration/<br>
-Link to the PR: https://github.com/GeomScale/volume_approximation/pull/163<br>
-Status: Open + Approved<br>
-<br><br>
-### 2. Lovasz Vempala Integration<BR>
+#### [Link to the blog post](https://surajchoubey.github.io/gsoc21/simple-mc-integration/)<br>
+#### [Link to the PR](https://github.com/GeomScale/volume_approximation/pull/163)<br>
+#### Status: **Open + Approved**<br>
+<br>
+### 2. **Lovasz Vempala Integration**<BR>
 This PR is to add a single function based on Lovasz Vempala research paper (Pg-7) to integrate logconcave functions around polytope in the N-dimensional space. It has substantial amount of more accuracy than Simple Monte Carlo Integration as mentioned.
 <br><br>
-Link to the blog post: https://surajchoubey.github.io/gsoc21/lv-mc-integration/<br>
-Link to the PR: https://github.com/GeomScale/volume_approximation/pull/170<br>
-Status: Open<br>
+#### [Link to the blog post](https://surajchoubey.github.io/gsoc21/lv-mc-integration/)<br>
+#### [Link to the PR](https://github.com/GeomScale/volume_approximation/pull/170)<br>
+#### Status: **Open**<br>
